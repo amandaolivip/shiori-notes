@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meu Catálogo — SHIORI Notes</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <header>
+            <a href="home.html" class="logo">SHIORI. 栞</a>
+
+            <div class="header-actions">
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Início</a></li>
+                        <li><a href="catalogo.html">Catálogo</a></li>
+                        <li><a href="estatisticas.html">Estatísticas</a></li>
+                    </ul>
+                </nav>
+
+                <button id="theme-toggle">
+                    <span class="theme-icon">☾</span>
+                    <span class="theme-text">Alternar Tema</span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="catalogo">
+
+                <div class="catalogo-header">
+                    <h1>Meu Catálogo</h1>
+                    <p>Suas histórias favoritas, reunidas em um só lugar.</p>
+                </div>
+
+                <div class="catalogo-stats">
+
+                    <div class="stat-card">
+                        <h3>Total de títulos</h3>
+                        <p id="total-titulos">0</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Concluídos</h3>
+                        <p id="total-concluidos">0</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Em andamento</h3>
+                        <p id="total-andamento">0</p>
+                    </div>
+
+                </div>
+
+                <div class="catalogo-acoes">
+                    <button id="abrir-formulario" type="button">
+                        + Adicionar título
+                    </button>
+                </div>
+
+                <div class="formulario-container" id="formulario-container">
+
+                    <h2 id="titulo-formulario">Adicionar título</h2>
+
+                    <form id="formulario-titulo">
+
+                        <div class="campo-formulario">
+                            <label for="nome-titulo">Nome do título</label>
+                            <input
+                                type="text"
+                                id="nome-titulo"
+                                placeholder="Ex: Frieren e a Jornada para o Além"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="tipo-titulo">Tipo</label>
+                            <select id="tipo-titulo" required>
+                                <option value="">Selecione</option>
+                                <option value="anime">Anime</option>
+                                <option value="manga">Mangá</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="status-titulo">Status</label>
+                            <select id="status-titulo" required>
+                                <option value="">Selecione</option>
+                                <option value="assistindo">Assistindo</option>
+                                <option value="lendo">Lendo</option>
+                                <option value="concluido">Concluído</option>
+                                <option value="pausado">Pausado</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="progresso-titulo">Progresso</label>
+                            <input
+                                type="number"
+                                id="progresso-titulo"
+                                min="0"
+                                placeholder="Quantidade de episódios ou volumes"
+                            >
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="imagem-titulo">Capa</label>
+                            <input
+                                type="file"
+                                id="imagem-titulo"
+                                accept="image/*"
+                            >
+                        </div>
+
+                        <div class="botoes-formulario">
+
+    <button type="submit">Adicionar ao catálogo</button>
+
+    <button type="button" id="cancelar-edicao">
+        Cancelar
+    </button>
+
+</div>
+
+                    </form>
+                </div>
+
+                <div class="catalogo-controles">
+
+                    <div class="campo-busca">
+                        <input
+                            type="search"
+                            id="busca-titulo"
+                            placeholder="Buscar título..."
+                        >
+                    </div>
+
+                    <div class="filtros">
+
+                        <select id="filtro-tipo">
+                            <option value="todos">Todos</option>
+                            <option value="anime">Anime</option>
+                            <option value="manga">Mangá</option>
+                        </select>
+
+                        <select id="filtro-status">
+                            <option value="todos">Todos os status</option>
+                            <option value="assistindo">Assistindo</option>
+                            <option value="lendo">Lendo</option>
+                            <option value="concluido">Concluído</option>
+                            <option value="pausado">Pausado</option>
+                        </select>
+
+                    </div>
+                    <button type="button" id="limpar-filtros" hidden>
+    Limpar filtros
+</button>
+                </div>
+
+                <div class="catalogo-lista">
+                </div>
+
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h2>SHIORI. 栞</h2>
+                    <p>Histórias que merecem ser guardadas.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 SHIORI Notes.</p>
+                <span>Feito com amor.</span>
+            </div>
+        </footer>
+
+        <script src="main.js"></script>
+
+    </body>
+</html>
+
+
