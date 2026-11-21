@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -11,9 +12,7 @@
 
         <link rel="stylesheet" href="style.css">
     </head>
-
     <body>
-
         <header>
             <a href="index.html" class="logo">SHIORI. 栞</a>
 
@@ -26,6 +25,10 @@
                     </ul>
                 </nav>
 
+                <button id="language-toggle" aria-label="Change language">
+                    EN
+                </button>
+
                 <button id="theme-toggle">
                     <span class="theme-icon">☾</span>
                     <span class="theme-text">Alternar Tema</span>
@@ -37,83 +40,89 @@
             <section class="catalogo">
 
                 <div class="catalogo-header">
-                    <h1>Meu Catálogo</h1>
-                    <p>Suas histórias favoritas, reunidas em um só lugar.</p>
+                    <h1 data-i18n="tituloCatalogo">Meu Catálogo</h1>
+                    <p data-i18n="descricaoCatalogo">
+                        Suas histórias favoritas, reunidas em um só lugar.
+                    </p>
                 </div>
 
                 <div class="catalogo-stats">
 
                     <div class="stat-card">
-                        <h3>Total de títulos</h3>
+                        <h3 data-i18n="totalTitulos">Total de títulos</h3>
                         <p id="total-titulos">0</p>
                     </div>
 
                     <div class="stat-card">
-                        <h3>Concluídos</h3>
+                        <h3 data-i18n="concluidos">Concluídos</h3>
                         <p id="total-concluidos">0</p>
                     </div>
 
                     <div class="stat-card">
-                        <h3>Em andamento</h3>
+                        <h3 data-i18n="emAndamento">Em andamento</h3>
                         <p id="total-andamento">0</p>
                     </div>
 
                 </div>
 
                 <div class="catalogo-acoes">
-                    <button id="abrir-formulario" type="button">
+                    <button id="abrir-formulario" type="button" data-i18n="adicionarTitulo">
                         + Adicionar título
                     </button>
                 </div>
 
                 <div class="formulario-container" id="formulario-container">
 
-                    <h2 id="titulo-formulario">Adicionar título</h2>
+                    <h2 id="titulo-formulario" data-i18n="adicionarTituloFormulario">
+                        Adicionar título
+                    </h2>
 
                     <form id="formulario-titulo">
 
                         <div class="campo-formulario">
-                            <label for="nome-titulo">Nome do título</label>
+                            <label for="nome-titulo" data-i18n="nomeTitulo">Nome do título</label>
                             <input
                                 type="text"
                                 id="nome-titulo"
-                                placeholder="Ex: Frieren e a Jornada para o Além"
+                                placeholder="Ex: Fullmetal Alchemist: Brotherhood"
+                                data-i18n-placeholder="exemploTitulo"
                                 required
                             >
                         </div>
 
                         <div class="campo-formulario">
-                            <label for="tipo-titulo">Tipo</label>
+                            <label for="tipo-titulo" data-i18n="tipo">Tipo</label>
                             <select id="tipo-titulo" required>
-                                <option value="">Selecione</option>
-                                <option value="anime">Anime</option>
-                                <option value="manga">Mangá</option>
+                                <option value="" data-i18n="selecione">Selecione</option>
+                                <option value="anime" data-i18n="anime">Anime</option>
+                                <option value="manga" data-i18n="manga">Mangá</option>
                             </select>
                         </div>
 
                         <div class="campo-formulario">
-                            <label for="status-titulo">Status</label>
+                            <label for="status-titulo" data-i18n="status">Status</label>
                             <select id="status-titulo" required>
-                                <option value="">Selecione</option>
-                                <option value="assistindo">Assistindo</option>
-                                <option value="lendo">Lendo</option>
-                                <option value="concluido">Concluído</option>
-                                <option value="pausado">Pausado</option>
+                                <option value="" data-i18n="selecione">Selecione</option>
+                                <option value="assistindo" data-i18n="assistindo">Assistindo</option>
+                                <option value="lendo" data-i18n="lendo">Lendo</option>
+                                <option value="concluido" data-i18n="concluido">Concluído</option>
+                                <option value="pausado" data-i18n="pausado">Pausado</option>
                             </select>
                         </div>
 
                         <div class="campo-formulario">
-                            <label for="progresso-titulo">Progresso</label>
+                            <label for="progresso-titulo" data-i18n="progresso">Progresso</label>
                             <input
                                 type="number"
                                 id="progresso-titulo"
                                 min="0"
                                 placeholder="Quantidade de episódios ou volumes"
+                                data-i18n-placeholder="placeholderProgresso"
                             >
                         </div>
 
                         <div class="campo-formulario">
-                            <label for="imagem-titulo">Capa</label>
+                            <label for="imagem-titulo" data-i18n="capa">Capa</label>
                             <input
                                 type="file"
                                 id="imagem-titulo"
@@ -123,13 +132,15 @@
 
                         <div class="botoes-formulario">
 
-    <button type="submit">Adicionar ao catálogo</button>
+                            <button type="submit" data-i18n="adicionarAoCatalogo">
+                                Adicionar ao catálogo
+                            </button>
 
-    <button type="button" id="cancelar-edicao">
-        Cancelar
-    </button>
+                            <button type="button" id="cancelar-edicao" data-i18n="cancelar">
+                                Cancelar
+                            </button>
 
-</div>
+                        </div>
 
                     </form>
                 </div>
@@ -141,29 +152,41 @@
                             type="search"
                             id="busca-titulo"
                             placeholder="Buscar título..."
+                            data-i18n-placeholder="buscarTitulo"
                         >
+                    </div>
+
+                    <div class="campo-ordenacao">
+                        <select id="ordenar-titulos" aria-label="Ordenar títulos">
+                            <option value="recentes" data-i18n="ordenacaoRecentes">Adicionados recentemente</option>
+                            <option value="antigos" data-i18n="ordenacaoAntigos">Mais antigos primeiro</option>
+                            <option value="az" data-i18n="ordenacaoAZ">Nome (A–Z)</option>
+                            <option value="za" data-i18n="ordenacaoZA">Nome (Z–A)</option>
+                        </select>
                     </div>
 
                     <div class="filtros">
 
                         <select id="filtro-tipo">
-                            <option value="todos">Todos</option>
-                            <option value="anime">Anime</option>
-                            <option value="manga">Mangá</option>
+                            <option value="todos" data-i18n="todos">Todos</option>
+                            <option value="anime" data-i18n="anime">Anime</option>
+                            <option value="manga" data-i18n="manga">Mangá</option>
                         </select>
 
                         <select id="filtro-status">
-                            <option value="todos">Todos os status</option>
-                            <option value="assistindo">Assistindo</option>
-                            <option value="lendo">Lendo</option>
-                            <option value="concluido">Concluído</option>
-                            <option value="pausado">Pausado</option>
+                            <option value="todos" data-i18n="todosStatus">Todos os status</option>
+                            <option value="assistindo" data-i18n="assistindo">Assistindo</option>
+                            <option value="lendo" data-i18n="lendo">Lendo</option>
+                            <option value="concluido" data-i18n="concluido">Concluído</option>
+                            <option value="pausado" data-i18n="pausado">Pausado</option>
                         </select>
 
                     </div>
-                    <button type="button" id="limpar-filtros" hidden>
-    Limpar filtros
-</button>
+
+                    <button type="button" id="limpar-filtros" hidden data-i18n="limparFiltros">
+                        Limpar filtros
+                    </button>
+
                 </div>
 
                 <div class="catalogo-lista">
@@ -176,13 +199,17 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <h2>SHIORI. 栞</h2>
-                    <p>Histórias que merecem ser guardadas.</p>
+                    <p data-i18n="fraseRodape">
+                        Histórias que merecem ser guardadas.
+                    </p>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>© 2026 SHIORI Notes.</p>
-                <span>Feito com amor.</span>
+                <span data-i18n="feitoComAmor">
+                    Feito com amor.
+                </span>
             </div>
         </footer>
 
@@ -190,5 +217,6 @@
 
     </body>
 </html>
+
 
 

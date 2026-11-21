@@ -1,6 +1,264 @@
 let titulos = JSON.parse(localStorage.getItem('titulos')) || [];
 
 
+// Adicionar data aos títulos antigos que ainda não possuem esse registro
+
+let titulosAtualizados = false;
+
+titulos.forEach(function(titulo, indice) {
+
+    if (typeof titulo.dataAdicao !== 'number') {
+
+        titulo.dataAdicao = indice;
+
+        titulosAtualizados = true;
+
+    }
+
+});
+
+if (titulosAtualizados) {
+    localStorage.setItem('titulos', JSON.stringify(titulos));
+}
+
+const traducoes = {
+    'pt-br': {
+        // Menu e tema
+        inicio: 'Início',
+        catalogo: 'Catálogo',
+        estatisticas: 'Estatísticas',
+        temaClaro: 'Tema Claro',
+        temaEscuro: 'Tema Escuro',
+
+        // Página inicial
+        fraseDestaque: 'SEU ESPAÇO PESSOAL',
+        tituloPrincipal: 'Toda história tem seu lugar.',
+        descricaoPrincipal: 'Organize seus animes e mangás favoritos, acompanhe sua jornada e registre as histórias que marcaram você.',
+        textoConvite: 'Pronto para iniciar sua próxima aventura?',
+        botaoExplorar: 'Explorar catálogo →',
+        fraseRodape: 'Histórias que merecem ser guardadas.',
+        feitoComAmor: 'Feito com amor.',
+
+        // Catálogo
+        tituloCatalogo: 'Meu Catálogo',
+        descricaoCatalogo: 'Suas histórias favoritas, reunidas em um só lugar.',
+        totalTitulos: 'Total de títulos',
+        concluidos: 'Concluídos',
+        emAndamento: 'Em andamento',
+        adicionarTitulo: '+ Adicionar título',
+        adicionarTituloFormulario: 'Adicionar título',
+        nomeTitulo: 'Nome do título',
+        exemploTitulo: 'Ex: Frieren e a Jornada para o Além',
+        tipo: 'Tipo',
+        status: 'Status',
+        selecione: 'Selecione',
+        anime: 'Anime',
+        manga: 'Mangá',
+        assistindo: 'Assistindo',
+        lendo: 'Lendo',
+        concluido: 'Concluído',
+        pausado: 'Pausado',
+        progresso: 'Progresso',
+        placeholderProgresso: 'Quantidade de episódios ou volumes',
+        capa: 'Capa',
+        adicionarAoCatalogo: 'Adicionar ao catálogo',
+        cancelar: 'Cancelar',
+        buscarTitulo: 'Buscar título...',
+        ordenacaoRecentes: 'Adicionados recentemente',
+        ordenacaoAntigos: 'Mais antigos primeiro',
+        ordenacaoAZ: 'Nome (A–Z)',
+        ordenacaoZA: 'Nome (Z–A)',
+        todos: 'Todos',
+        todosStatus: 'Todos os status',
+        limparFiltros: 'Limpar filtros',
+        excluir: 'Excluir',
+        editar: 'Editar',
+        editarTitulo: 'Editar título',
+        salvarAlteracoes: 'Salvar alterações',
+        confirmarExclusao: 'Tem certeza de que deseja excluir este título?',
+        episodiosVolumes: 'episódios/volumes',
+        capaDe: 'Capa de',
+        mensagemCatalogoVazio: 'Sua coleção ainda está vazia. Que tal adicionar seu primeiro título?',
+        mensagemSemResultados: 'Não encontramos títulos com esses filtros.',
+        erroImagem: 'Não foi possível processar a imagem.',
+        tituloPaginaEstatisticas: 'Estatísticas — SHIORI Notes',
+        fraseEstatisticas: 'SUA JORNADA',
+        tituloEstatisticas: 'Suas estatísticas',
+        descricaoEstatisticas: 'Acompanhe sua coleção e veja como suas histórias estão evoluindo.',
+        pausados: 'Pausados',
+        minhaColecao: 'Minha coleção',
+        distribuicaoColecao: 'Distribuição entre animes e mangás.',
+        statusTitulos: 'Status dos títulos',
+        andamentoColecao: 'Acompanhe o andamento da sua coleção.',
+        animes: 'Animes',
+        mangas: 'Mangás',
+        assistindoGrafico: 'Assistindo',
+        lendoGrafico: 'Lendo',
+        concluidosGrafico: 'Concluídos',
+        pausadosGrafico: 'Pausados'
+    },
+
+    'en': {
+        // Menu e tema
+        inicio: 'Home',
+        catalogo: 'Catalog',
+        estatisticas: 'Statistics',
+        temaClaro: 'Light Theme',
+        temaEscuro: 'Dark Theme',
+
+        // Página inicial
+        fraseDestaque: 'YOUR PERSONAL SPACE',
+        tituloPrincipal: 'Every story has its place.',
+        descricaoPrincipal: 'Organize your favorite anime and manga, follow your journey, and keep track of the stories that left a mark on you.',
+        textoConvite: 'Ready to start your next adventure?',
+        botaoExplorar: 'Explore catalog →',
+        fraseRodape: 'Stories worth keeping.',
+        feitoComAmor: 'Made with love.',
+
+        // Catálogo
+        tituloCatalogo: 'My Catalog',
+        descricaoCatalogo: 'Your favorite stories, gathered in one place.',
+        totalTitulos: 'Total titles',
+        concluidos: 'Completed',
+        emAndamento: 'In progress',
+        adicionarTitulo: '+ Add title',
+        adicionarTituloFormulario: 'Add title',
+        nomeTitulo: 'Title name',
+        exemploTitulo: 'E.g. Frieren: Beyond Journey’s End',
+        tipo: 'Type',
+        status: 'Status',
+        selecione: 'Select',
+        anime: 'Anime',
+        manga: 'Manga',
+        assistindo: 'Watching',
+        lendo: 'Reading',
+        concluido: 'Completed',
+        pausado: 'On hold',
+        progresso: 'Progress',
+        placeholderProgresso: 'Number of episodes or volumes',
+        capa: 'Cover',
+        adicionarAoCatalogo: 'Add to catalog',
+        cancelar: 'Cancel',
+        buscarTitulo: 'Search title...',
+        ordenacaoRecentes: 'Recently added',
+        ordenacaoAntigos: 'Oldest first',
+        ordenacaoAZ: 'Name (A–Z)',
+        ordenacaoZA: 'Name (Z–A)',
+        todos: 'All',
+        todosStatus: 'All statuses',
+        limparFiltros: 'Clear filters',
+        excluir: 'Delete',
+        editar: 'Edit',
+        editarTitulo: 'Edit title',
+        salvarAlteracoes: 'Save changes',
+        confirmarExclusao: 'Are you sure you want to delete this title?',
+        episodiosVolumes: 'episodes/volumes',
+        capaDe: 'Cover of',
+        mensagemCatalogoVazio: 'Your collection is still empty. How about adding your first title?',
+        mensagemSemResultados: 'No titles were found with these filters.',
+        erroImagem: 'Unable to process the image.',
+        tituloPaginaEstatisticas: 'Statistics — SHIORI Notes',
+        fraseEstatisticas: 'YOUR JOURNEY',
+        tituloEstatisticas: 'Your statistics',
+        descricaoEstatisticas: 'Track your collection and see how your stories are progressing.',
+        pausados: 'On hold',
+        minhaColecao: 'My collection',
+        distribuicaoColecao: 'Distribution between anime and manga.',
+        statusTitulos: 'Title statuses',
+        andamentoColecao: 'Track the progress of your collection.',
+        animes: 'Anime',
+        mangas: 'Manga',
+        assistindoGrafico: 'Watching',
+        lendoGrafico: 'Reading',
+        concluidosGrafico: 'Completed',
+        pausadosGrafico: 'On hold'
+    }
+};
+
+// Idioma salvo
+
+let idiomaAtual = localStorage.getItem('idioma') || 'pt-br';
+
+
+// Aplicar idioma ao documento
+function aplicarIdioma() {
+
+    document.documentElement.lang = idiomaAtual;
+
+    const textos = traducoes[idiomaAtual];
+
+    // Elementos com tradução automática
+    const elementosTraduzidos = document.querySelectorAll('[data-i18n]');
+
+    elementosTraduzidos.forEach(function(elemento) {
+
+        const chave = elemento.dataset.i18n;
+
+        if (textos[chave]) {
+            elemento.textContent = textos[chave];
+        }
+
+    });
+
+    // Traduzir placeholders
+    const elementosPlaceholder = document.querySelectorAll('[data-i18n-placeholder]');
+
+    elementosPlaceholder.forEach(function(elemento) {
+
+        const chave = elemento.dataset.i18nPlaceholder;
+
+        if (textos[chave]) {
+            elemento.placeholder = textos[chave];
+        }
+
+    });
+
+    // Menu de navegação
+    const linksMenu = document.querySelectorAll('nav a');
+
+    if (linksMenu[0]) linksMenu[0].textContent = textos.inicio;
+    if (linksMenu[1]) linksMenu[1].textContent = textos.catalogo;
+    if (linksMenu[2]) linksMenu[2].textContent = textos.estatisticas;
+
+    // Botão de idioma
+    const botaoIdioma = document.getElementById('language-toggle');
+
+    if (botaoIdioma) {
+        botaoIdioma.textContent = idiomaAtual === 'pt-br' ? 'EN' : 'PT-BR';
+    }
+
+    // Atualizar botão de tema
+    atualizarBotaoTema();
+    atualizarTextoFormulario();
+
+}
+
+// Atualizar textos do formulário conforme o idioma
+
+function atualizarTextoFormulario() {
+
+    const formulario = document.getElementById('formulario-titulo');
+
+    if (!formulario) return;
+
+    const textos = traducoes[idiomaAtual];
+
+    const tituloFormulario = document.getElementById('titulo-formulario');
+    const botaoEnviar = formulario.querySelector('button[type="submit"]');
+
+    if (indiceEdicao !== null) {
+
+        tituloFormulario.textContent = textos.editarTitulo;
+        botaoEnviar.textContent = textos.salvarAlteracoes;
+
+    } else {
+
+        tituloFormulario.textContent = textos.adicionarTituloFormulario;
+        botaoEnviar.textContent = textos.adicionarAoCatalogo;
+
+    }
+}
+
 // ==========================================
 // 1. ATUALIZAR ESTATÍSTICAS
 // ==========================================
@@ -33,6 +291,10 @@ function atualizarEstatisticas() {
 }
 
 
+let graficoTipos = null;
+let graficoStatus = null; 
+
+
 // ==========================================
 // 2. GRÁFICO DE TIPOS
 // ==========================================
@@ -51,11 +313,18 @@ function criarGraficoTipos() {
 
     if (!canvas) return;
 
-    new Chart(canvas, {
+    // Evita criar uma nova instância sobre um gráfico existente
+    if (graficoTipos) {
+        graficoTipos.destroy();
+    }
+
+    const textos = traducoes[idiomaAtual];
+
+    graficoTipos = new Chart(canvas, {
         type: 'doughnut',
 
         data: {
-            labels: ['Animes', 'Mangás'],
+            labels: [textos.animes, textos.mangas],
 
             datasets: [{
                 data: [animes, mangas],
@@ -75,6 +344,7 @@ function criarGraficoTipos() {
 // ==========================================
 // 3. GRÁFICO DE STATUS
 // ==========================================
+
 
 function criarGraficoStatus() {
 
@@ -98,11 +368,23 @@ function criarGraficoStatus() {
 
     if (!canvas) return;
 
-    new Chart(canvas, {
+    // Evita criar uma nova instância sobre um gráfico existente
+    if (graficoStatus) {
+        graficoStatus.destroy();
+    }
+
+    const textos = traducoes[idiomaAtual];
+
+    graficoStatus = new Chart(canvas, {
         type: 'bar',
 
         data: {
-            labels: ['Assistindo', 'Lendo', 'Concluídos', 'Pausados'],
+            labels: [
+                textos.assistindoGrafico,
+                textos.lendoGrafico,
+                textos.concluidosGrafico,
+                textos.pausadosGrafico
+            ],
 
             datasets: [{
                 data: [assistindo, lendo, concluidos, pausados],
@@ -176,7 +458,9 @@ function atualizarBotaoTema() {
         }
 
         if (textoTema) {
-            textoTema.textContent = temaEscuro ? 'Tema Claro' : 'Tema Escuro';
+            textoTema.textContent = temaEscuro
+    ? traducoes[idiomaAtual].temaClaro
+    : traducoes[idiomaAtual].temaEscuro;
         }
     }
 }
@@ -198,6 +482,36 @@ if (botaoTema) {
 
     });
 }
+
+// Alternância de idioma
+
+const botaoIdioma = document.getElementById('language-toggle');
+
+if (botaoIdioma) {
+
+    botaoIdioma.addEventListener('click', function() {
+
+        idiomaAtual = idiomaAtual === 'pt-br' ? 'en' : 'pt-br';
+
+        localStorage.setItem('idioma', idiomaAtual);
+
+        aplicarIdioma();
+
+
+        aplicarFiltros();
+
+        if (document.getElementById('grafico-tipos')) {
+    criarGraficoTipos();
+    criarGraficoStatus();
+}
+
+    });
+
+}
+
+// Aplicar idioma salvo ao abrir a página
+
+aplicarIdioma();
 
 
 // ==========================================
@@ -221,9 +535,11 @@ function cancelarEdicao() {
 
     indiceEdicao = null;
 
-    document.getElementById('titulo-formulario').textContent = 'Adicionar título';
+    const textos = traducoes[idiomaAtual];
 
-    formularioTitulo.querySelector('button[type="submit"]').textContent = 'Adicionar ao catálogo';
+    document.getElementById('titulo-formulario').textContent = textos.adicionarTituloFormulario;
+
+    formularioTitulo.querySelector('button[type="submit"]').textContent = textos.adicionarAoCatalogo;
 
     formularioContainer.style.display = 'none';
 }
@@ -246,9 +562,11 @@ if (botaoAdicionar && formularioContainer) {
 
             indiceEdicao = null;
 
-            document.getElementById('titulo-formulario').textContent = 'Adicionar título';
+            const textos = traducoes[idiomaAtual];
 
-            formularioTitulo.querySelector('button[type="submit"]').textContent = 'Adicionar ao catálogo';
+            document.getElementById('titulo-formulario').textContent = textos.adicionarTituloFormulario;
+
+            formularioTitulo.querySelector('button[type="submit"]').textContent = textos.adicionarAoCatalogo;
 
             formularioContainer.style.display = 'block';
 
@@ -266,11 +584,15 @@ if (botaoAdicionar && formularioContainer) {
 // 8. FUNÇÃO PARA CRIAR OS CARDS
 // ==========================================
 
+
 function criarCard(novoTitulo) {
 
     const listaCatalogo = document.querySelector('.catalogo-lista');
 
     if (!listaCatalogo) return;
+
+    // Textos do idioma atual
+    const textos = traducoes[idiomaAtual];
 
     const novoCard = document.createElement('article');
     novoCard.classList.add('anime-card');
@@ -280,50 +602,47 @@ function criarCard(novoTitulo) {
 
 
     // Nome do título
-
     const titulo = document.createElement('h3');
     titulo.textContent = novoTitulo.nome;
 
 
     // Tipo
-
     const tipoCard = document.createElement('span');
     tipoCard.classList.add('anime-tipo');
 
-    tipoCard.textContent = novoTitulo.tipo === 'anime' ? 'Anime' : 'Mangá';
+    tipoCard.textContent = novoTitulo.tipo === 'anime'
+        ? textos.anime
+        : textos.manga;
 
 
     // Status
-
     const statusCard = document.createElement('span');
     statusCard.classList.add('anime-status');
 
     const nomesStatus = {
-        assistindo: 'Assistindo',
-        lendo: 'Lendo',
-        concluido: 'Concluído',
-        pausado: 'Pausado'
+        assistindo: textos.assistindo,
+        lendo: textos.lendo,
+        concluido: textos.concluido,
+        pausado: textos.pausado
     };
 
     statusCard.textContent = nomesStatus[novoTitulo.status] || novoTitulo.status;
 
 
     // Progresso
-
     const progressoCard = document.createElement('p');
 
     progressoCard.textContent =
-        novoTitulo.progresso + ' episódios/volumes';
+        novoTitulo.progresso + ' ' + textos.episodiosVolumes;
 
 
     // Imagem
-
     if (typeof novoTitulo.imagem === 'string' && novoTitulo.imagem) {
 
         const capa = document.createElement('img');
 
         capa.src = novoTitulo.imagem;
-        capa.alt = 'Capa de ' + novoTitulo.nome;
+        capa.alt = textos.capaDe + ' ' + novoTitulo.nome;
 
         novoCard.appendChild(capa);
 
@@ -331,39 +650,35 @@ function criarCard(novoTitulo) {
 
 
     // Reunindo as informações
-
     informacoes.append(tipoCard, titulo, statusCard, progressoCard);
 
     novoCard.appendChild(informacoes);
 
 
     // Botão excluir
-
     const botaoExcluir = document.createElement('button');
 
     botaoExcluir.type = 'button';
-    botaoExcluir.textContent = 'Excluir';
+    botaoExcluir.textContent = textos.excluir;
     botaoExcluir.classList.add('botao-excluir');
 
 
     // Botão editar
-
     const botaoEditar = document.createElement('button');
 
     botaoEditar.type = 'button';
-    botaoEditar.textContent = 'Editar';
+    botaoEditar.textContent = textos.editar;
     botaoEditar.classList.add('botao-editar');
 
 
     // Evento de edição
-
     botaoEditar.addEventListener('click', function() {
 
         indiceEdicao = titulos.indexOf(novoTitulo);
 
-        document.getElementById('titulo-formulario').textContent = 'Editar título';
+        document.getElementById('titulo-formulario').textContent = textos.editarTitulo;
 
-        formularioTitulo.querySelector('button[type="submit"]').textContent = 'Salvar alterações';
+        formularioTitulo.querySelector('button[type="submit"]').textContent = textos.salvarAlteracoes;
 
         document.getElementById('nome-titulo').value = novoTitulo.nome;
         document.getElementById('tipo-titulo').value = novoTitulo.tipo;
@@ -380,10 +695,9 @@ function criarCard(novoTitulo) {
 
 
     // Evento de exclusão
-
     botaoExcluir.addEventListener('click', function() {
 
-        if (!confirm('Tem certeza de que deseja excluir este título?')) {
+        if (!confirm(textos.confirmarExclusao)) {
             return;
         }
 
@@ -401,10 +715,10 @@ function criarCard(novoTitulo) {
 
 
     // Adicionando o card ao catálogo
-
     listaCatalogo.appendChild(novoCard);
 
 }
+
 
 
 // ==========================================
@@ -414,12 +728,14 @@ function criarCard(novoTitulo) {
 const campoBusca = document.getElementById('busca-titulo');
 const filtroTipo = document.getElementById('filtro-tipo');
 const filtroStatus = document.getElementById('filtro-status');
+const campoOrdenacao = document.getElementById('ordenar-titulos');
 const botaoLimpar = document.getElementById('limpar-filtros');
 
 
 // ==========================================
 // 10. FILTRAR O CATÁLOGO
 // ==========================================
+
 
 function aplicarFiltros() {
 
@@ -428,6 +744,8 @@ function aplicarFiltros() {
     if (!campoBusca || !filtroTipo || !filtroStatus || !listaCatalogo) {
         return;
     }
+
+    const textos = traducoes[idiomaAtual];
 
     const busca = campoBusca.value.toLowerCase();
     const tipo = filtroTipo.value;
@@ -440,6 +758,38 @@ function aplicarFiltros() {
         const correspondeStatus = status === 'todos' || titulo.status === status;
 
         return correspondeNome && correspondeTipo && correspondeStatus;
+
+    });
+
+
+    // Ordenar os títulos
+
+    const ordem = campoOrdenacao ? campoOrdenacao.value : 'recentes';
+
+    titulosFiltrados.sort(function(a, b) {
+
+        switch (ordem) {
+
+            case 'recentes':
+                return b.dataAdicao - a.dataAdicao;
+
+            case 'antigos':
+                return a.dataAdicao - b.dataAdicao;
+
+            case 'az':
+                return a.nome.localeCompare(b.nome, idiomaAtual === 'en' ? 'en' : 'pt-BR', {
+                    sensitivity: 'base'
+                });
+
+            case 'za':
+                return b.nome.localeCompare(a.nome, idiomaAtual === 'en' ? 'en' : 'pt-BR', {
+                    sensitivity: 'base'
+                });
+
+            default:
+                return 0;
+
+        }
 
     });
 
@@ -460,7 +810,7 @@ function aplicarFiltros() {
 
         const mensagem = document.createElement('p');
         mensagem.classList.add('mensagem-vazia');
-        mensagem.textContent = 'Sua coleção ainda está vazia. Que tal adicionar seu primeiro título?';
+        mensagem.textContent = textos.mensagemCatalogoVazio;
 
         listaCatalogo.appendChild(mensagem);
 
@@ -474,7 +824,7 @@ function aplicarFiltros() {
 
         const mensagem = document.createElement('p');
         mensagem.classList.add('mensagem-vazia');
-        mensagem.textContent = 'Não encontramos títulos com esses filtros.';
+        mensagem.textContent = textos.mensagemSemResultados;
 
         listaCatalogo.appendChild(mensagem);
 
@@ -489,6 +839,7 @@ function aplicarFiltros() {
     });
 
 }
+
 
 
 // ==========================================
@@ -526,6 +877,9 @@ if (filtroStatus) {
     filtroStatus.addEventListener('change', aplicarFiltros);
 }
 
+if (campoOrdenacao) {
+    campoOrdenacao.addEventListener('change', aplicarFiltros);
+}
 
 // ==========================================
 // 13. SALVAR UM TÍTULO
@@ -553,9 +907,11 @@ function salvarTitulo(novoTitulo) {
 
     formularioTitulo.reset();
 
-    formularioTitulo.querySelector('button[type="submit"]').textContent = 'Adicionar ao catálogo';
+    const textos = traducoes[idiomaAtual];
 
-    document.getElementById('titulo-formulario').textContent = 'Adicionar título';
+    formularioTitulo.querySelector('button[type="submit"]').textContent = textos.adicionarAoCatalogo;
+
+    document.getElementById('titulo-formulario').textContent = textos.adicionarTituloFormulario;
 
     formularioContainer.style.display = 'none';
 
@@ -657,7 +1013,11 @@ if (formularioTitulo) {
             tipo: tipo,
             status: status,
             progresso: progresso,
-            imagem: imagemAnterior
+            imagem: imagemAnterior,
+
+        dataAdicao: indiceEdicao !== null
+        ? titulos[indiceEdicao].dataAdicao
+        : Date.now()
         };
 
 
@@ -677,12 +1037,11 @@ if (formularioTitulo) {
 
                 .catch(function(erro) {
 
-                    console.error(erro);
+                console.error(erro);
 
-                    alert('Não foi possível processar a imagem.');
+                alert(traducoes[idiomaAtual].erroImagem);
 
-                });
-
+});
         } else {
 
             salvarTitulo(novoTitulo);

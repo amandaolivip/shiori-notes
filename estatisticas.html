@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Estatísticas — SHIORI Notes</title>
-
+        <title data-i18n="tituloPaginaEstatisticas">Estatísticas — SHIORI Notes</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
-
         <link rel="stylesheet" href="style.css">
     </head>
-
     <body>
-
         <header>
             <a href="index.html" class="logo">SHIORI. 栞</a>
-
             <div class="header-actions">
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Início</a></li>
-                        <li><a href="catalogo.html">Catálogo</a></li>
-                        <li><a href="estatisticas.html">Estatísticas</a></li>
-                    </ul>
-                </nav>
-
-                <button id="theme-toggle">
-                    <span class="theme-icon">☾</span>
-                    <span class="theme-text">Alternar Tema</span>
-                </button>
-            </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="estatisticas.html">Estatísticas</a></li>
+        </ul>
+    </nav>
+    <button id="language-toggle" aria-label="Change language">
+        EN
+    </button>
+    <button id="theme-toggle">
+        <span class="theme-icon">☾</span>
+        <span class="theme-text">Alternar Tema</span>
+    </button>
+</div>
         </header>
 
         
@@ -40,30 +35,34 @@
     <section class="estatisticas">
 
         <div class="estatisticas-header">
-            <p class="estatisticas-eyebrow">SUA JORNADA</p>
-            <h1>Suas estatísticas</h1>
-            <p>Acompanhe sua coleção e veja como suas histórias estão evoluindo.</p>
-        </div>
+    <p class="estatisticas-eyebrow" data-i18n="fraseEstatisticas">SUA JORNADA</p>
+
+    <h1 data-i18n="tituloEstatisticas">Suas estatísticas</h1>
+
+    <p data-i18n="descricaoEstatisticas">
+        Acompanhe sua coleção e veja como suas histórias estão evoluindo.
+    </p>
+</div>
 
         <div class="indicadores">
 
             <div class="indicador-card">
-                <p>Total de títulos</p>
+                <p data-i18n="totalTitulos">Total de títulos</p>
                 <h2 id="total-titulos">0</h2>
             </div>
 
             <div class="indicador-card">
-                <p>Concluídos</p>
+                <p data-i18n="concluidos">Concluídos</p>
                 <h2 id="total-concluidos">0</h2>
             </div>
 
             <div class="indicador-card">
-                <p>Em andamento</p>
+                <p data-i18n="emAndamento">Em andamento</p>
                 <h2 id="total-andamento">0</h2>
             </div>
 
             <div class="indicador-card">
-                <p>Pausados</p>
+                <p data-i18n="pausados">Pausados</p>
                 <h2 id="total-pausados">0</h2>
             </div>
 
@@ -72,16 +71,16 @@
         <div class="graficos">
 
             <div class="grafico-card">
-                <h2>Minha coleção</h2>
-                <p>Distribuição entre animes e mangás.</p>
-                <canvas id="grafico-tipos"></canvas>
-            </div>
+    <h2 data-i18n="minhaColecao">Minha coleção</h2>
+    <p data-i18n="distribuicaoColecao">Distribuição entre animes e mangás.</p>
+    <canvas id="grafico-tipos"></canvas>
+</div>
 
-            <div class="grafico-card">
-                <h2>Status dos títulos</h2>
-                <p>Acompanhe o andamento da sua coleção.</p>
-                <canvas id="grafico-status"></canvas>
-            </div>
+<div class="grafico-card">
+    <h2 data-i18n="statusTitulos">Status dos títulos</h2>
+    <p data-i18n="andamentoColecao">Acompanhe o andamento da sua coleção.</p>
+    <canvas id="grafico-status"></canvas>
+</div>
 
         </div>
 
@@ -94,13 +93,17 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <h2>SHIORI. 栞</h2>
-                    <p>Histórias que merecem ser guardadas.</p>
+                    <p data-i18n="fraseRodape">
+    Histórias que merecem ser guardadas.
+</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>© 2026 SHIORI Notes.</p>
-                <span>Feito com amor.</span>
+                <span data-i18n="feitoComAmor">
+    Feito com amor.
+</span>
             </div>
 
         </footer>
