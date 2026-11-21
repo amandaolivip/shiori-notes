@@ -40,6 +40,7 @@ const traducoes = {
         feitoComAmor: 'Feito com amor.',
 
         // Catálogo
+        tituloPaginaCatalogo: 'Meu Catálogo — SHIORI Notes',
         tituloCatalogo: 'Meu Catálogo',
         descricaoCatalogo: 'Suas histórias favoritas, reunidas em um só lugar.',
         totalTitulos: 'Total de títulos',
@@ -116,6 +117,7 @@ const traducoes = {
         feitoComAmor: 'Made with love.',
 
         // Catálogo
+        tituloPaginaCatalogo: 'My Catalog — SHIORI Notes',
         tituloCatalogo: 'My Catalog',
         descricaoCatalogo: 'Your favorite stories, gathered in one place.',
         totalTitulos: 'Total titles',
